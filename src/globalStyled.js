@@ -17,6 +17,11 @@ const GlobalStyled = createGlobalStyle`
         font-size: 1.6rem;
         color: ${blanco};
         background-color: ${hexToRgba(negro, .9)};
+        padding-bottom: 4.9rem;
+
+        @media (min-width: 768px) {
+            padding-bottom: 0;
+        }
     }
 
     p {

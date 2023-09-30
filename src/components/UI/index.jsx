@@ -1,9 +1,10 @@
 import styled from "styled-components";
 import { Button } from "@mui/material";
 import { blanco, colorPrimario } from "./variables";
+import { Link } from "react-router-dom";
 
 
-export const Btn = styled.button`
+export const Btn = styled(Link)`
     cursor: pointer;
     color: ${blanco};
     padding: 1.5rem 4rem;
@@ -11,3 +12,26 @@ export const Btn = styled.button`
     border: 1px solid ${blanco};
     background-color: transparent;
 `;
+
+export const BtnHeader = styled(Btn)`
+    border: none;
+    color: ${blanco};
+    background-color: ${colorPrimario};
+    position: fixed;
+    z-index: 10;
+    bottom: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    text-align: center;
+    
+    @media (min-width: 768px) {
+        border-radius: .4rem;
+        border: 1px solid ${blanco};
+        background-color: transparent;
+        position: unset;
+        width: unset;
+        display: unset;
+    }
+`;
+
