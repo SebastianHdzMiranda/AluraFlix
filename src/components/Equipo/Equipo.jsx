@@ -2,13 +2,6 @@ import styled from "styled-components";
 import Card from "../card/card";
 
 
-
-
-
-
-
-
-
 const Equipo = (props)=> {
     const {id, titulo, color, info} = props.datos;
     const {videos} = props;

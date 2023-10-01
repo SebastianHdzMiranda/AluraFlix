@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import logo from '../../../src/assets/img/Logo.png';
+import logo from '../../assets/img/logo.png';
 import { Container } from "@mui/material";
 import { negro, colorPrimario } from "../UI/variables";
 import { BtnHeader } from "../UI";

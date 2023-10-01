@@ -36,7 +36,6 @@ const BannerContainer = styled.section`
     }
 `;
 const DivStyled = styled.div`
-    /* position: absolute; */
     position: relative;
     display: flex;
     flex-direction: column;

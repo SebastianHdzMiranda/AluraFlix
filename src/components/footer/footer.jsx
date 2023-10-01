@@ -1,8 +1,7 @@
 import styled from "styled-components";
 import { colorPrimario, negro } from "../UI/variables";
-import logo from '../../assets/img/Logo.png';
+import logo from '../../assets/img/logo.png';
 import { Link, useLocation } from "react-router-dom";
-
 
 
 const Footer = ()=>{
