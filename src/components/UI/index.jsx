@@ -9,14 +9,12 @@ export const Btn = styled(Link)`
     color: ${blanco};
     padding: 1.5rem 4rem;
     border-radius: .4rem;
-    border: 1px solid ${blanco};
-    background-color: transparent;
+    background-color: ${colorPrimario};
+    border: none;
 `;
 
 export const BtnHeader = styled(Btn)`
-    border: none;
     color: ${blanco};
-    background-color: ${colorPrimario};
     position: fixed;
     z-index: 10;
     bottom: 0;

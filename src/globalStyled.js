@@ -16,8 +16,7 @@ const GlobalStyled = createGlobalStyle`
         font-family: 'Roboto', sans-serif;
         font-size: 1.6rem;
         color: ${blanco};
-        background-color: ${hexToRgba(negro, .9)};
-        padding-bottom: 4.9rem;
+        background-color: #1e1e1e;
 
         @media (min-width: 768px) {
             padding-bottom: 0;
@@ -49,7 +48,7 @@ const GlobalStyled = createGlobalStyle`
         font-size: 4rem;
     }
     h2 {
-        font-size: 3.2rem;
+        font-size: 2.8rem;
     }
     h3 {
         font-size: 2.4rem;

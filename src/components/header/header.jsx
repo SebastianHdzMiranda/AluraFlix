@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
-import logo from '../../../src/assets/img/logo.png';
+import logo from '../../../src/assets/img/Logo.png';
 import { Container } from "@mui/material";
-import { negro, colorPrimario, blanco } from "../UI/variables";
-import { Btn, BtnHeader } from "../UI";
+import { negro, colorPrimario } from "../UI/variables";
+import { BtnHeader } from "../UI";
 import { Link, useLocation,  } from "react-router-dom";
 
 const HeaderStyled = styled.header`
@@ -32,7 +32,6 @@ const ContainerStyled = styled.div`
 const Header = ()=> {
     // entrega la url (especificamente el path)
     const location = useLocation().pathname;
-    console.log(location);
   
 
     return(
