@@ -40,11 +40,11 @@ const ParrafoStyled = styled.p`
 
 
 const Card = ({video})=>{
-    console.log(video);
+    // console.log(video);
     return(
     
         <DivStyled>
-            <Link to={`/${video.id}`}>
+            <Link to={`/post/${video.id}`}>
                 <ImgStyled src={video.imagen} />
                 <ParrafoStyled>{video.titulo}</ParrafoStyled>
                 
