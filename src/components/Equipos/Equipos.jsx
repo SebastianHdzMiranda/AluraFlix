@@ -1,6 +1,8 @@
 import Equipo from "../Equipo/Equipo";
 import { Container } from "@mui/material";
+import { useContext } from "react";
 import styled from "styled-components";
+import { CounterContext } from "../../context";
 
 const EquiposStyled = styled.section`
     margin-top: 6rem;
@@ -19,8 +21,10 @@ const EquiposContainer = styled.div`
 
 
 
-const Equipos = ({equipos, videos})=> {
-
+const Equipos = ()=> {
+    // context
+    const counterData = useContext(CounterContext);
+  
 
     return(
         <EquiposStyled>
@@ -29,11 +33,11 @@ const Equipos = ({equipos, videos})=> {
                     <Equipo datos='' videos={[]}/>
 
                     { //aqui añadir el arreglo del estado videos
-                        equipos.map((equipo, i)=>
+                        counterData.equipos.map((equipo, i)=>
                             <Equipo 
                                 datos= {equipo}
                                 key={i}
-                                videos={videos.filter((video)=> video.equipo === equipo.titulo)}
+                                videos={counterData.videos.filter((video)=> video.equipo === equipo.titulo)}
                             />
                         )
                     }

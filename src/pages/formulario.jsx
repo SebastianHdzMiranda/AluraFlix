@@ -2,9 +2,9 @@ import { Container } from "@mui/material";
 import styled from "styled-components";
 import { blanco, colorPrimario, negro } from "../components/UI/variables";
 import { Btn } from "../components/UI";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { v4 as uuidv4 } from "uuid";
-
+import { CounterContext } from "../context";
 
 const ContainerStyled = styled(Container)`
     padding: 5rem 0;
@@ -105,8 +105,13 @@ const FormStyled = styled.form`
 
 `
 
-const Formulario = ({equipos, videos, actualizarVideos})=> {
-    // console.log(equipos, videos, actualizarVideos);
+const Formulario = ()=> {
+    // Context (uso de actualizarVideos y equipos(titulo))
+    const counterData = useContext(CounterContext);
+    const equipos = counterData.equipos.map((equipo)=>equipo.titulo);
+
+
+    // useState
     const [titulo, setTitulo] = useState('');
     const [video, setVideo] = useState('');
     const [imagen, setImagen] = useState('');
@@ -118,7 +123,7 @@ const Formulario = ({equipos, videos, actualizarVideos})=> {
     function manejarEnvio(e) {
         e.preventDefault();
         const datosEnviar = {titulo, video, imagen, equipo, descripcion, id: uuidv4(),};
-        actualizarVideos(datosEnviar);
+        counterData.actualizarVideos(datosEnviar);
     }
 
 

@@ -4,11 +4,11 @@ import Equipos from "../components/Equipos/Equipos";
 import styled from "styled-components";
 
 
-const Home = ({equipos, videos})=> {
+const Home = ()=> {
 
     return( <>
         <Banner />
-        <Equipos equipos={equipos} videos={videos}/>
+        <Equipos />
     </>)
 }
 

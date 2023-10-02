@@ -1,14 +1,17 @@
 import styled from "styled-components";
 import Card from "../card/card";
+import { useContext } from "react";
+import { CounterContext } from "../../context";
 
 
 const Equipo = (props)=> {
+    // props
     const {id, titulo, color, info} = props.datos;
     const {videos} = props;
 
+
     const EquipoStyled = styled.div`
         display: flex;
-        justify-content: space-between;
         gap: 2rem;
         align-items: center;
         overflow-x: auto;
@@ -41,38 +44,26 @@ const Equipo = (props)=> {
     `
 
     return(<>
-        {videos.length !== 0 && <div>
-            {titulo && 
-                <HeadingStyled>
-                    <TituloStyled>{titulo}</TituloStyled>
-                    <InfoStyled>{info}</InfoStyled>
-                </HeadingStyled>
-            }
-            <EquipoStyled>
-                {/* {!titulo && 
-                    <>
-                        <ImgStyled src={front1} />
-                        <ImgStyled src={front2}/>
-                        <ImgStyled src={front3}/>
-                        <ImgStyled src={front4}/>
-                        <ImgStyled src={front1} />
-                        <ImgStyled src={front2}/>
-                        <ImgStyled src={front3}/>
-                        <ImgStyled src={front4}/>
-                    </>
+        {videos.length !== 0 && 
+            <div>
+                {titulo && 
+                    <HeadingStyled>
+                        <TituloStyled>{titulo}</TituloStyled>
+                        <InfoStyled>{info}</InfoStyled>
+                    </HeadingStyled>
+                }
+                <EquipoStyled>
 
-                } */}
+                    {videos.map((video, i)=> 
+                        <Card 
+                            video={video}
+                            key={i}
+                        />
+                    )}
 
-
-                {videos.map((video, i)=> 
-                    <Card 
-                        video={video}
-                        key={i}
-                    />
-                )}
-
-            </EquipoStyled>
-        </div>}
+                </EquipoStyled>
+            </div>
+        }
         
     </>)
 }
