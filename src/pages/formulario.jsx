@@ -1,10 +1,11 @@
 import { Container } from "@mui/material";
 import styled from "styled-components";
-import { blanco, colorPrimario, negro } from "../components/UI/variables";
+import { blanco, colorPrimario, negro, rojo } from "../components/UI/variables";
 import { Btn } from "../components/UI";
 import { useState, useContext } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { CounterContext } from "../context";
+import Exito from "../components/exito/exito";
 
 const ContainerStyled = styled(Container)`
     padding: 5rem 0;
@@ -34,7 +35,7 @@ const FormStyled = styled.form`
     & .label{
         position: absolute;
         top: -10px;
-        left: 20px;
+        left: -2px;
         background-color: #1e1e1e;
         z-index: 1;
         padding: 0 .5rem;
@@ -47,14 +48,14 @@ const FormStyled = styled.form`
         }
     }
     & .input, & .textarea{
-        padding-inline: 2.5rem;
+        /* padding-inline: 2.5rem; */
         width: 100%;
         height: 100%;
         background-color: transparent;
         color: ${blanco};
-        border-radius: 10px;
+        /* border-radius: 10px; */
         outline: none;
-        border: 1px solid ${blanco};
+        /* border: 1px solid ${blanco}; */
     }
     & .seccion--textArea{
         height: 20rem;
@@ -63,15 +64,14 @@ const FormStyled = styled.form`
         padding-top: 2rem;
         resize: none;
     }
-    & .botones{
+    & .boton{
         position:  relative;
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        justify-content: flex-end;
         text-align: center;
         gap: 2rem;
         @media (min-width: 768px) {
-            justify-content: flex-start;
             flex-direction: row;
         }
     }
@@ -91,11 +91,11 @@ const FormStyled = styled.form`
         border: none;
 
 
-        @media (min-width: 768px) {
+        /* @media (min-width: 768px) {
             margin-top: 0;
             position: absolute;
             right: 0;
-        }
+        } */
     }
     & .option{
         background-color: ${negro};
@@ -103,6 +103,45 @@ const FormStyled = styled.form`
     }
     
 
+`
+const InputStyled = styled.input`
+    background-color: #fff;
+    border: none;
+    border-bottom: 3px solid ${(props)=> props.valid === false ? rojo : '#ffffff43'};
+    border-radius: unset;
+    transition: border-bottom .3s ease;
+
+    &:focus{
+        border-bottom: 3px solid ${(props)=> props.valid === false ? rojo : colorPrimario};
+    }
+`
+const SelectStyled = styled.select`
+    background-color: #fff;
+    border: none;
+    border-bottom: 3px solid ${(props)=> props.valid === false ? rojo : '#ffffff43'};
+    border-radius: unset;
+    transition: border-bottom .3s ease;
+
+    &:focus{
+        border-bottom: 3px solid ${(props)=> props.valid === false ? rojo : colorPrimario};
+    }
+`
+const TextAreaStyled = styled.textarea`
+    background-color: #fff;
+    border: none;
+    border-bottom: 3px solid ${(props)=> props.valid === false ? rojo : '#ffffff43'};
+    border-radius: unset;
+    transition: border-bottom .3s ease;
+
+    &:focus{
+        border-bottom: 3px solid ${(props)=> props.valid === false ? rojo : colorPrimario};
+    }
+`
+const HelperText = styled.p`
+    font-size: 1.2rem;
+    position: absolute;
+    bottom: -30px;
+    color: ${rojo};
 `
 
 const Formulario = ()=> {
@@ -117,13 +156,162 @@ const Formulario = ()=> {
     const [imagen, setImagen] = useState('');
     const [equipo, setEquipo] = useState('');
     const [descripcion, setDescripcion] = useState('');
+    const [exito, setExito] = useState(false);
+
+    const [errors, setErrors] = useState({
+        title: {
+            error: null,
+            mensaje: '',
+        },
+        linkVideo: {
+            error: null,
+            mensaje: '',
+        },
+        linkImagen: {
+            error: null,
+            mensaje: '',
+        },
+        description: {
+            error: null,
+            mensaje: '',
+        },
+    })
 
 
     // funciones
     function manejarEnvio(e) {
         e.preventDefault();
-        const datosEnviar = {titulo, video, imagen, equipo, descripcion, id: uuidv4(),};
-        counterData.actualizarVideos(datosEnviar);
+        if (errors.title.error && errors.linkVideo.error && errors.linkImagen.error && errors.description.error ) {
+            const datosEnviar = {titulo, video, imagen, equipo, descripcion, id: uuidv4(),};
+            counterData.actualizarVideos(datosEnviar);
+            setExito(true)
+
+        } else {
+            console.log('no se creo nada');
+        }
+
+    }
+
+    function validarTitulo(e) {
+        const value = e.target.value;
+
+        if (value.length < 3 ) {
+            return(
+
+                setErrors((prevState) => ({
+                    ...prevState,
+                    title: {
+                        error: false,
+                        mensaje: 'Deben de ser al menos 3 caracteres',
+                    },
+                }))
+
+            )
+        } else{
+            return (
+
+                setErrors((prevState) => ({
+                    ...prevState,
+                    title: {
+                        error: true,
+                        mensaje: '',
+                    },
+                }))
+
+            )
+        }
+    }
+    function validarVideo(e) {
+        const value = e.target.value;
+        const regex = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+        const resultado = regex.test(value);
+
+        if (!resultado ) {
+            return(
+
+                setErrors((prevState) => ({
+                    ...prevState,
+                    linkVideo: {
+                        error: false,
+                        mensaje: 'Debe ser una URL de youtube',
+                    },
+                }))
+
+            )
+        } else{
+            return (
+
+                setErrors((prevState) => ({
+                    ...prevState,
+                    linkVideo: {
+                        error: true,
+                        mensaje: '',
+                    },
+                }))
+
+            )
+        }
+    }
+    function validarImagen(e) {
+        const value = e.target.value;
+        const regex = /^(http|https):\/\/[^\s/$.?#].[^\s]*\.(jpg|jpeg|png|gif|bmp)$/;
+        const resultado = regex.test(value);
+
+        if (!resultado ) {
+            return(
+
+                setErrors((prevState) => ({
+                    ...prevState,
+                    linkImagen: {
+                        error: false,
+                        mensaje: 'Debe ser una URL de imagen valida',
+                    },
+                }))
+
+            )
+        } else{
+            return (
+
+                setErrors((prevState) => ({
+                    ...prevState,
+                    linkImagen: {
+                        error: true,
+                        mensaje: '',
+                    },
+                }))
+
+            )
+        }
+    }
+
+    function validaDescription(e) {
+        const value = e.target.value;
+
+        if (value.length < 10 ) {
+            return(
+
+                setErrors((prevState) => ({
+                    ...prevState,
+                    description: {
+                        error: false,
+                        mensaje: 'Deben de ser al menos 10 caracteres',
+                    },
+                }))
+
+            )
+        } else{
+            return (
+
+                setErrors((prevState) => ({
+                    ...prevState,
+                    description: {
+                        error: true,
+                        mensaje: '',
+                    },
+                }))
+
+            )
+        }
     }
 
 
@@ -134,53 +322,62 @@ const Formulario = ()=> {
                 <div className="contenido">
                     <div className="seccion">
                         <label className="label" >Titulo</label>
-                        <input 
+                        <InputStyled 
                             id="titulo" 
                             className="input" 
                             type="text" 
-                            placeholder="Digite Su el titulo" 
+                            placeholder="Digite el titulo" 
                             value={titulo}
+                            valid={errors.title.error}
                             onChange={(e)=>{
                                 const value = e.target.value;
                                 setTitulo(value);
                             }}
+                            onBlur={validarTitulo}
                         />
+                        {errors.title.error === false && <HelperText>{errors.title.mensaje}</HelperText>}
+
                     </div>
                     <div className="seccion">
                         <label className="label" >Link del video</label>
-                        <input 
+                        <InputStyled 
                             id="link" 
                             className="input" 
                             type="text" 
                             placeholder="Digite el link del video" 
                             value={video}
+                            valid={errors.linkVideo.error}
                             onChange={(e)=>{
                                 const value = e.target.value;
                                 setVideo(value);
                             }}
+                            onBlur={validarVideo}
                         />
+                        {errors.linkVideo.error === false && <HelperText>{errors.linkVideo.mensaje}</HelperText>}
                     </div>
                     <div className="seccion">
                         <label className="label" >Link de la imagen del video</label>
-                        <input 
+                        <InputStyled 
                             id="imagen" 
                             className="input" 
-                            required
                             type="text" 
-                            placeholder="Digite el link del video" 
+                            placeholder="Digite el link de la imagen" 
                             value={imagen}
+                            valid={errors.linkImagen.error}
                             onChange={(e)=>{
                                 const value = e.target.value;
                                 setImagen(value);
                             }}
+                            onBlur={validarImagen}
                         />
+                        {errors.linkImagen.error === false && <HelperText>{errors.linkImagen.mensaje}</HelperText>}
                     </div>
                     <div className='seccion'>
                         <label className="label" htmlFor="equipos">Equipos</label>
-                        <select id="equipos" className="input" value={equipo} onChange={(e)=> setEquipo(e.target.value)}>  
+                        <SelectStyled required id="equipos" className="input" value={equipo} onChange={(e)=> setEquipo(e.target.value)}>  
 
 
-                            <option disabled hidden value=''>Seleccionar equipo</option>
+                            <option disabled hidden value=''>Seleccionar epoca</option>
 
                             {equipos.map( (equipo, index)=>{
                                 return (
@@ -195,33 +392,40 @@ const Formulario = ()=> {
                             })}
 
 
-                        </select>
+                        </SelectStyled>
                     </div>
 
                     <div className="seccion seccion--textArea">
                         <label className="label">Descripción</label>
-                        <textarea 
+                        <TextAreaStyled 
                             name="descricion" 
                             className="textarea" 
                             id="descripcion" 
                             placeholder="Escribe una descripción general"
                             value={descripcion}
+                            valid={errors.description.error}
                             onChange={(e)=>{
                                 const value = e.target.value;
                                 setDescripcion(value);
                             }}
+                            onBlur={validaDescription}
                         >
                             
-                        </textarea>
+                        </TextAreaStyled>
+                        {errors.description.error === false && <HelperText>{errors.description.mensaje}</HelperText>}
                     </div>
 
-                    <div className="botones">
-                        <Btn className="" >Guardar</Btn>
-                        <Btn className="limpiar" >Limpiar</Btn>
+                    <div className="boton">
+                        {/* <Btn className="" >Guardar</Btn>
+                        <Btn className="limpiar" >Limpiar</Btn> */}
                         <input className="submit" type="submit" value="Enviar" />
                     </div>
                 </div>
             </FormStyled>
+
+            
+            {exito && <Exito /> }
+
         </ContainerStyled>
     )
 }

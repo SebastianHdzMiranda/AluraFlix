@@ -10,7 +10,6 @@ const Footer = ()=>{
 
     const FooterStyled = styled.footer`
         background-color: ${negro};
-        border-top: 2px solid ${colorPrimario};
         padding: 2rem 0;
         display: flex;
         flex-direction: column;

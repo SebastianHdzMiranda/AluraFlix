@@ -16,7 +16,7 @@ const Post = ()=> {
 
     //estilos
     const DivStyled = styled.div`
-        margin: 4rem 0;
+        padding: 10rem 0 4rem 0;
     `
 
     const H1styled = styled.h1`

@@ -28,6 +28,7 @@ export const BtnHeader = styled(Btn)`
         border: 1px solid ${blanco};
         background-color: transparent;
         position: unset;
+        padding: 1rem 2.5rem;
         width: unset;
         display: unset;
     }

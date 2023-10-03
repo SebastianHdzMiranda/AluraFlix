@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import banner from '../../assets/img/banner.png'
-import player from '../../assets/img/player.png'
+import banner from '../../assets/img/banner.jpg'
+import player from '../../assets/img/u2.jpg'
 import { Container } from '@mui/material';
 import { Btn } from '../UI';
 import { colorSecundario, blanco } from '../UI/variables';
@@ -32,7 +32,7 @@ const BannerContainer = styled.section`
         padding-bottom: 60%;
     }
     @media (min-width: 1024px) {
-        padding-bottom: 43%;
+        padding-bottom: 47%;
     }
 `;
 const DivStyled = styled.div`
@@ -99,17 +99,19 @@ const ParrafoStyled = styled.p`
     line-height: 1.4;
     margin-top: 0;
     display: none;
-    margin: 0;
+    margin: 0 0 3rem 0;
 
     @media (min-width: 768px) {
         display: block;
         font-size: 1.6rem;
     }
+
     @media (min-width: 1024px) {
         font-size: 1.7rem;
     }
 `
 const ImgStyled = styled.img`
+    border-radius: 10px;
     display: none;
     @media (min-width: 768px) {
         display: block;
@@ -117,7 +119,7 @@ const ImgStyled = styled.img`
     }
     @media (min-width: 1024px) {
         /* width: 55rem; */
-        width: 47vw;
+        /* width: 4vw; */
         /* width: unset; */
 
     }
@@ -128,7 +130,7 @@ const BtnStyled = styled(Btn)`
     font-size: 1.6rem;
 
     @media (min-width: 768px) {
-        display: none;
+        /* display: none; */
     }
 
 `
@@ -138,8 +140,8 @@ const Banner = ()=> { return <>
         <Container maxWidth='xl' sx={{height: '100%', position: 'absolute', left: '0', right: '0'}}>
             <DivStyled> 
                 <InfoContainer>
-                    <FrontStyled>Front End</FrontStyled>
-                    <TituloStyled>Challenge React</TituloStyled>
+                    {/* <FrontStyled>Front End</FrontStyled> */}
+                    <TituloStyled>Nuevos tracks</TituloStyled>
                     <ParrafoStyled>Este challenge es una forma de aprendizaje. Es un mecanismo donde podrás comprometerte en la resolución de un problema para poder aplicar todos los conocimientos adquiridos en la formación React.</ParrafoStyled>
                     <BtnStyled>Ver</BtnStyled>
                 </InfoContainer>   

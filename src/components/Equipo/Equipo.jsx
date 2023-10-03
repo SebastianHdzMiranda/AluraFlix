@@ -35,12 +35,9 @@ const Equipo = (props)=> {
         border-radius: 5px;
 
         @media (min-width: 768px) {
-            font-size: 2.8rem;
+            font-size: 1.6rem;
         }
 
-    `
-    const InfoStyled = styled.p`
-        font-size: 1.5rem;
     `
 
     return(<>
@@ -49,7 +46,6 @@ const Equipo = (props)=> {
                 {titulo && 
                     <HeadingStyled>
                         <TituloStyled>{titulo}</TituloStyled>
-                        <InfoStyled>{info}</InfoStyled>
                     </HeadingStyled>
                 }
                 <EquipoStyled>

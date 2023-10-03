@@ -5,7 +5,7 @@ import styled from "styled-components";
 import { CounterContext } from "../../context";
 
 const EquiposStyled = styled.section`
-    margin-top: 6rem;
+    margin-top: 4rem;
     margin-bottom: 6rem;
     position: relative;
     @media (min-width: 768px) {
@@ -16,7 +16,10 @@ const EquiposStyled = styled.section`
 const EquiposContainer = styled.div`
     display: flex;
     flex-direction: column;
-    gap: 5rem;
+    gap: 1rem;
+    @media (min-width: 768px) {
+        gap: 5rem;
+    }
 `
 
 

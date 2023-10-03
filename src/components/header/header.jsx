@@ -7,15 +7,20 @@ import { BtnHeader } from "../UI";
 import { Link, useLocation,  } from "react-router-dom";
 
 const HeaderStyled = styled.header`
-    background-color: ${negro};
-    border-bottom: 2px solid ${colorPrimario};
+    background-color: #000000ab;
+    /* border-bottom: 2px solid ${colorPrimario}; */
     padding: 2rem 0;
+    position: fixed;
+    top: 0;
+    z-index: 100;
+    width: 100%;
     @media (min-width: 768px) {
-        padding: 2rem 0;
+        padding: 1.3rem 0;
+        
     }
 `;
 const Logo = styled.img`
-    width: 16.8rem;
+    width: 16rem;
 `;
 const ContainerStyled = styled.div`
     display: flex;

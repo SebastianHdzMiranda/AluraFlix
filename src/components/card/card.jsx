@@ -8,15 +8,15 @@ import { blanco } from "../UI/variables";
 // import front4 from '../../assets/equipoFront/4.jpg'
 
 const ImgStyled = styled.img`
-    height: 15rem;
+    height: 13rem;
     object-fit: cover;
     width: 100%;
-    border-radius: 10px;
+    border-radius: 5px;
     @media (min-width: 768px) {
-        height: 20rem;
+        height: 15rem;
     }
     @media (min-width: 1024px) {
-        height: 25rem;
+        height: 18rem;
     }
 `;
 
@@ -24,10 +24,10 @@ const DivStyled = styled.div`
     min-width: 25rem;
     flex-basis: 25rem;
     @media (min-width: 768px) {
-        min-width: 35rem;
+        min-width: 27rem;
     }
     @media (min-width: 1024px) {
-        min-width: 40rem;
+        min-width: 30rem;
     }
     text-align: center;
 
@@ -47,7 +47,6 @@ const Card = ({video})=>{
             <Link to={`/post/${video.id}`}>
                 <ImgStyled src={video.imagen} />
                 <ParrafoStyled>{video.titulo}</ParrafoStyled>
-                
             </Link>
         </DivStyled>
     
