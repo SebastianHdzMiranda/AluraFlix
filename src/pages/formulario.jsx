@@ -36,7 +36,6 @@ const FormStyled = styled.form`
         position: absolute;
         top: -10px;
         left: -2px;
-        background-color: #1e1e1e;
         z-index: 1;
         padding: 0 .5rem;
     }

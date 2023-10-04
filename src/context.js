@@ -8,7 +8,7 @@ export const CounterContext = createContext();
 // 
 export const CounterProvider = ({ children }) => {
     // localStorage variables
-    const videosStorage = JSON.parse(localStorage.getItem('videos'));
+    const videosStorage = JSON.parse(localStorage.getItem('videos')) || [];
 
     // useState
     const [equipos, setEquipos] = useState([
@@ -18,7 +18,7 @@ export const CounterProvider = ({ children }) => {
         {id: uuidv4(), titulo: '90s', color: '#6B5BE2', info: 'Formación UX'},
         {id: uuidv4(), titulo: '2000s', color: '#6B5BE2', info: 'Formación UX'},
     ]);
-    const [videos, setVideos] = useState([
+    const [videos, setVideos] = useState(videosStorage || [
         {
             titulo: 'House of cards',
             imagen: 'https://i.ytimg.com/vi/8nTFjVm9sTQ/maxresdefault.jpg',
@@ -142,7 +142,7 @@ export const CounterProvider = ({ children }) => {
         {
             titulo: "God Only Knows",
             video: "https://www.youtube.com/watch?v=NADx3-qRxek&ab_channel=TheBeachBoysVEVO",
-            imagen: "https://exclusive.radio/wp-content/uploads/2022/05/Pet-Sounds-comp-e1652966098399.jpg",
+            imagen: "https://mediaareplural.ca/wp-content/uploads/2022/04/pet-sounds.jpg",
             equipo: "60s",
             descripcion: "La canción es ampliamente señalada como una de las mejores canciones de la historia de la música popular, considerándola Paul McCartney, entre otros, como su canción favorita. Tiene la particularidad de ser una de las primeras canciones pop en las que se usa la palabra «Dios» (God) en el título. La canción representa también una novedad técnica y sofisticada en relación con la precedente producción de los Beach Boys, y de cualquier otro grupo pop de la época, en particular por su estructura melódica y por la armonización vocal de los coros. En la introducción es posible escuchar instrumentos más bien inusuales para el género, como el clavecín y el corno.",  
             id: uuidv4(),
@@ -197,16 +197,12 @@ export const CounterProvider = ({ children }) => {
         },
     ]) 
 
-    // useEffect
-    useEffect(()=>{
-        if (videos.length > 0) {
-            localStorage.setItem('videos', JSON.stringify(videos));
-        }
-    }, [videos])
 
     // funciones
     function actualizarVideos(video) {
         setVideos([...videos, video]);
+        const videosAct = [...videos, video];
+        localStorage.setItem('videos', JSON.stringify(videosAct));
     }
 
     const values = {

@@ -1,9 +1,12 @@
 import styled from 'styled-components';
+import {BsFillPlayFill} from 'react-icons/bs'
 import banner from '../../assets/img/banner.jpg'
 import player from '../../assets/img/u2.jpg'
+import top from '../../assets/img/top10.svg'
 import { Container } from '@mui/material';
+
 import { Btn } from '../UI';
-import { colorSecundario, blanco } from '../UI/variables';
+import { colorSecundario, blanco, negro } from '../UI/variables';
 
 const BannerContainer = styled.section`
 
@@ -12,7 +15,7 @@ const BannerContainer = styled.section`
     background-size: cover;
     background-position: 70% center;
     overflow: hidden;
-    padding-bottom: 100%;
+    padding-bottom: 170%;
     position: relative;
     min-height: 30rem;
 
@@ -29,7 +32,6 @@ const BannerContainer = styled.section`
     }
     @media (min-width: 768px) {
         background-position: center;
-        padding-bottom: 60%;
     }
     @media (min-width: 1024px) {
         padding-bottom: 47%;
@@ -126,13 +128,32 @@ const ImgStyled = styled.img`
 `;
 
 const BtnStyled = styled(Btn)`
-    padding: 1rem 5rem;
-    font-size: 1.6rem;
-
+    padding: 1.3rem 4rem 1.3rem 3rem;
+    font-size: 1.8rem;
+    display: flex;
+    gap: .5rem;
+    align-items: center;
+    justify-content: center;
+    line-height: 0;
+    color: ${negro};
+    background-color: ${blanco};
+    font-weight: 700;
+    width: 100%;
     @media (min-width: 768px) {
         /* display: none; */
+        width: max-content;
     }
 
+`
+const TopDiv = styled.div`
+    display: flex;
+`
+const TopImg = styled.img`
+    margin-right: 1rem;
+`
+const TopText = styled.p`
+    font-weight: 700;
+    font-size: 2.5rem;
 `
 
 const Banner = ()=> { return <>
@@ -142,8 +163,15 @@ const Banner = ()=> { return <>
                 <InfoContainer>
                     {/* <FrontStyled>Front End</FrontStyled> */}
                     <TituloStyled>Nuevos tracks</TituloStyled>
+                    <TopDiv>
+                        <TopImg src={top}/>
+                        <TopText>N°2 en Francia hoy</TopText>
+                    </TopDiv>
                     <ParrafoStyled>Este challenge es una forma de aprendizaje. Es un mecanismo donde podrás comprometerte en la resolución de un problema para poder aplicar todos los conocimientos adquiridos en la formación React.</ParrafoStyled>
-                    <BtnStyled>Ver</BtnStyled>
+                    
+
+                    
+                    <BtnStyled><BsFillPlayFill color='black' size='3rem'/>Escuchar</BtnStyled>
                 </InfoContainer>   
                 <div>
                     <ImgStyled src={player} alt='Player' />

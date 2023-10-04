@@ -9,16 +9,18 @@ const EquiposStyled = styled.section`
     margin-bottom: 6rem;
     position: relative;
     @media (min-width: 768px) {
-        margin-top: -6rem;
+        margin-top: -7rem;
+    }
+    @media (min-width: 1024px) {
+        margin-top: -8rem;
     }
 `
 
 const EquiposContainer = styled.div`
     display: flex;
     flex-direction: column;
-    gap: 1rem;
     @media (min-width: 768px) {
-        gap: 5rem;
+        gap: 1rem;
     }
 `
 

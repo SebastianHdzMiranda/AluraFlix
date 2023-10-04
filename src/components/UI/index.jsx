@@ -22,6 +22,8 @@ export const BtnHeader = styled(Btn)`
     display: block;
     width: 100%;
     text-align: center;
+    background-color: #141414;
+    /* display: none; */
     
     @media (min-width: 768px) {
         border-radius: .4rem;

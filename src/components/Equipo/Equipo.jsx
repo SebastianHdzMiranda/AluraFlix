@@ -12,7 +12,7 @@ const Equipo = (props)=> {
 
     const EquipoStyled = styled.div`
         display: flex;
-        gap: 2rem;
+        gap: .5rem;
         align-items: center;
         overflow-x: auto;
 
@@ -28,14 +28,14 @@ const Equipo = (props)=> {
     `
     const TituloStyled = styled.h2`
         font-size: 2rem;
-        background-color: ${color};
+        /* background-color: ${color}; */
         display: inline-block;
         padding-inline:  2.5rem;
-        font-weight: 300;
+        font-weight: 700;
         border-radius: 5px;
 
         @media (min-width: 768px) {
-            font-size: 1.6rem;
+            font-size: 2.6rem;
         }
 
     `

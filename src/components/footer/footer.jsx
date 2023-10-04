@@ -9,7 +9,7 @@ const Footer = ()=>{
     const location = useLocation().pathname;
 
     const FooterStyled = styled.footer`
-        background-color: ${negro};
+        background-color: #141414;
         padding: 2rem 0;
         display: flex;
         flex-direction: column;

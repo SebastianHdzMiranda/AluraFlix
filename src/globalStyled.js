@@ -13,10 +13,10 @@ const GlobalStyled = createGlobalStyle`
     }
     
     body {
-        font-family: 'Roboto', sans-serif;
+        font-family: 'Montserrat', sans-serif;
         font-size: 1.6rem;
         color: ${blanco};
-        background-color: #1e1e1e;
+        background-color: #141414;
 
         @media (min-width: 768px) {
             padding-bottom: 0;
