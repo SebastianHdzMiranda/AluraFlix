@@ -8,17 +8,8 @@ export const CounterContext = createContext();
 // 
 export const CounterProvider = ({ children }) => {
     // localStorage variables
-    const videosStorage = JSON.parse(localStorage.getItem('videos')) || [];
-
-    // useState
-    const [equipos, setEquipos] = useState([
-        {id: uuidv4(), titulo: '60s', color: '#9CD33B', info: 'Formación Back End de Alura Latam'},
-        {id: uuidv4(), titulo: '70s', color: '#FFBA05', info: 'Formación Innovación y Gestión de Alura Latam'},
-        {id: uuidv4(), titulo: '80s', color: '#6B5BE2', info: 'Formación UX'},
-        {id: uuidv4(), titulo: '90s', color: '#6B5BE2', info: 'Formación UX'},
-        {id: uuidv4(), titulo: '2000s', color: '#6B5BE2', info: 'Formación UX'},
-    ]);
-    const [videos, setVideos] = useState(videosStorage || [
+    const videosStorage = JSON.parse(localStorage.getItem('videos'));
+    const estadoInicial = videosStorage !== null ? videosStorage : [
         {
             titulo: 'House of cards',
             imagen: 'https://i.ytimg.com/vi/8nTFjVm9sTQ/maxresdefault.jpg',
@@ -195,7 +186,17 @@ export const CounterProvider = ({ children }) => {
             descripcion: "Está considerada por muchos como uno de los puntos culminantes de la historia del rock. Es una de las canciones más solicitadas en las emisoras de radio de los Estados Unidos, aunque no se ha publicado nunca en sencillo. El enorme éxito de la canción y la negativa de la banda a editar esta canción en sencillo ha podido contribuir a que Led Zeppelin IV sea uno de los álbumes más vendidos de la historia. No está enteramente claro si el título de la canción está inspirado en el título de una película. En las famosas revistas Guitar World y Rolling Stone, el solo de guitarra en La menor creado por Jimmy Page para esta canción fue elegido como el mejor de la historia, también la marca de instrumentos Gibson colocó este como el mejor en su lista de Los Mejores 50 solos de la historia",  
             id: uuidv4(),
         },
-    ]) 
+    ];
+
+    // useState
+    const [equipos, setEquipos] = useState([
+        {id: uuidv4(), titulo: '60s', color: '#9CD33B', info: 'Formación Back End de Alura Latam'},
+        {id: uuidv4(), titulo: '70s', color: '#FFBA05', info: 'Formación Innovación y Gestión de Alura Latam'},
+        {id: uuidv4(), titulo: '80s', color: '#6B5BE2', info: 'Formación UX'},
+        {id: uuidv4(), titulo: '90s', color: '#6B5BE2', info: 'Formación UX'},
+        {id: uuidv4(), titulo: '2000s', color: '#6B5BE2', info: 'Formación UX'},
+    ]);
+    const [videos, setVideos] = useState(estadoInicial) ;
 
 
     // funciones
