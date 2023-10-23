@@ -73,7 +73,7 @@ const Header = ()=> {
     const location = useLocation().pathname;
 
     // scroll
-    const [scrolling, setScrolling] = useState(false);
+    const [scrolling, setScrolling] = useState(null);
   
 
     useEffect(() => {
@@ -93,10 +93,10 @@ const Header = ()=> {
         return () => {
           window.removeEventListener('scroll', handleScroll);
         };
-      }, []);
+    }, []);
 
     return(
-        <HeaderStyled scrolling={scrolling}>
+        <HeaderStyled /*scrolling={scrolling}*/>
             <Container maxWidth='xl'>
                 <ContainerStyled>
                     

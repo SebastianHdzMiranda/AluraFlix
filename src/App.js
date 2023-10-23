@@ -1,6 +1,6 @@
 // libreries
-import React from "react";
-import {BrowserRouter, Routes, Route } from "react-router-dom";
+import React, { useEffect } from "react";
+import {BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 
 
 // components
@@ -18,7 +18,9 @@ function App() {
   return ( <>
     <GlobalStyled />
     <BrowserRouter>
+      <ScrollToTopOnRouteChange />
       <Header />
+
       <Routes >
         <Route 
           path="/" 
@@ -47,6 +49,17 @@ function App() {
     
 
   </>);
+}
+
+// Este componente permite que al cambiar de Route el contenido se muestre desde el top del scroll
+function ScrollToTopOnRouteChange() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
 }
 
 export default App;

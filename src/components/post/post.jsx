@@ -12,7 +12,7 @@ const Post = ()=> {
     const {video, descripcion, titulo} = videoContext[0];
     
     const videoId = video.match(/v=([^&]+)/)[1];
-    console.log(videoContext[0]);
+    // console.log(videoContext[0]);
 
     //estilos
     const DivStyled = styled.div`
