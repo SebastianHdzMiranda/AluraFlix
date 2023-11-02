@@ -8,7 +8,8 @@ export const CounterContext = createContext();
 // 
 export const CounterProvider = ({ children }) => {
     // localStorage variables
-    const videosStorage = JSON.parse(localStorage.getItem('videos'));
+    const videosStorage = JSON.parse(localStorage.getItem('RadioFlix'));
+
     const estadoInicial = videosStorage !== null ? videosStorage : [
         {
             titulo: 'House of cards',
@@ -188,6 +189,8 @@ export const CounterProvider = ({ children }) => {
         },
     ];
 
+    console.log(estadoInicial);
+
     // useState
     const [equipos, setEquipos] = useState([
         {id: uuidv4(), titulo: '60s', color: '#9CD33B', info: 'Formación Back End de Alura Latam'},
@@ -203,7 +206,7 @@ export const CounterProvider = ({ children }) => {
     function actualizarVideos(video) {
         setVideos([...videos, video]);
         const videosAct = [...videos, video];
-        localStorage.setItem('videos', JSON.stringify(videosAct));
+        localStorage.setItem('RadioFlix', JSON.stringify(videosAct));
     }
 
     const values = {
